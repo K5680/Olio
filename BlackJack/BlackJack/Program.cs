@@ -32,28 +32,37 @@ class BlackJack
                 };
 
                 // ei jatketa silmukkaa tästä pidemmälle, jos ollaan poistumassa
-                if (poistu > 0) continue; 
-                // käännetään string intiksi
-                theirNumber = System.Convert.ToInt32(vastaus);
+                if (poistu > 0) continue;
+
+                // tarkistetaan, että vastaus on kelvollinen int-tyyppiseksi, jos ei niin herjaillaan
+                if (int.TryParse(vastaus, out theirNumber))
+                {
+                    // käännetään string intiksi
+                    theirNumber = System.Convert.ToInt32(vastaus);
+                }
+                else
+                {   // käyttäjä näpytteli mitä sattuu, ei jatketaan silmukkaa loppuun
+                    Console.WriteLine("That was not a number, try again...");
+                    continue;
+                }
 
                 //comparing that given umber is valid
                 if (theirNumber < 1 || theirNumber > 21)
                 {
                     Console.WriteLine("The given number is out of limits, try again.");
                 }
+
+                //comparing
+                if (theirNumber >= myNumber && theirNumber <= 21)
+                {
+                    System.Console.WriteLine("You win.");
+                }
+                else
+                {   //häviö, kerrotaan oikea luku
+                    System.Console.WriteLine("You lose. The right number was " + myNumber);
+                }
             };
       
-              
-            //comparing
-            if (theirNumber >= myNumber && theirNumber <= 21)
-            {
-                System.Console.WriteLine("You win.");
-            }
-            else
-            {   //häviö, kerrotaan oikea luku
-                System.Console.WriteLine("You lose. The right number was " + myNumber);
-            }
-
             //nollataan arvonta seuraavaa kierrosta varten
             theirNumber = 0;
         }
