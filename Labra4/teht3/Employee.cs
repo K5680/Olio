@@ -22,7 +22,7 @@ namespace teht3
             get { return salary; }
             set
             {
-                Console.WriteLine("Asetetaan työntekijät.............");
+                Console.WriteLine("Asetetaan työntekijä.............");
                 if (value < 0.1)
                 {
                     Console.WriteLine("Palkaton kaveri?");

@@ -20,25 +20,27 @@ namespace Labra4
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+
+        Person person = new Person();
+        Teacher teacher = new Teacher();
+        //huom kirjoitusvirhe
+        Sudent student = new Sudent("Minna", "Husso", "J9090");
+
+
         public MainWindow()
         {
             InitializeComponent();
-            LuoHenkilöt();
-
         }
 
         public void LuoHenkilöt()
         {
-            Person person = new Person();
             person.FirstName = "Kirsi";
             person.LastName = "Kernel";
             person.Address = "torikatu 1";
             person.Age = 30;
             person.PhoneNumber = "020-12345678";
           
-
-            Teacher teacher = new Teacher();
+            
             teacher.FirstName = "Teppo";
             teacher.LastName = "Konsoli";
             teacher.Address = "piippukatu 2";
@@ -46,23 +48,21 @@ namespace Labra4
             teacher.PhoneNumber = "010-12345678";
             teacher.Room = "D100";
 
-         //   Console.WriteLine(teacher.ToString());
-
-            //huom kirjoitusvirhe
-            Sudent student = new Sudent("Minna", "Husso", "J9090");
+            //   Console.WriteLine(teacher.ToString());
+                        
             student.Address = "kilju 3";
             student.Age = 20;
             student.PhoneNumber = "040-12345678";
-            
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
+            //tämä homma ei toimi ! Paitsi toimiihan se nyt kun muuttujat esiteltiin koko luokalle.
+
             LuoHenkilöt();
-         //   string tietoa_opettajasta = teacher.ToString();
-         // tämä ei toimi   
-         //   Console.WriteLine(teacher.ToString());
-         //   person.PersonMethod(); // This method belongs to Person!
+            string tietoa_opettajasta = teacher.ToString();
+            txtBlock.Text = ("ope: \t" + tietoa_opettajasta + "\noppilas:\t" + student.ToString());
+          //  person.PersonMethod(); // This method belongs to Person!
         }
     }
 }

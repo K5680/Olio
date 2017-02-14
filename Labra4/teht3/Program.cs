@@ -30,12 +30,27 @@ namespace teht3
             tyypit.Add(new Employee("Heppu Puputti","Tallaaja",10001));
             int a = 0;
             //tulosta lista
-            foreach (Employee name in tyypit)
+            tyypit.ForEach(item => Console.Write(item + "\n"));
+
+
+            odota = Console.ReadLine();
+            //lisätään yksi kaveri
+            tyypit.Add(new Employee {Name="Peku Jukkola", Profession="Panttaaja", Salary=100});
+
+            // sorttaus
+            tyypit.Sort((x, y) => x.Name.CompareTo(y.Name));
+            // loop through all the persons
+            foreach (Employee employee in tyypit)
             {
-                Console.WriteLine(tyypit[a]);
-                a++;
-                
+                Console.WriteLine(employee.ToString());
             }
+
+
+            //foreach (Employee name in tyypit)
+            //{
+            //Console.WriteLine(tyypit[a]);
+            //a++;
+            //}
 
             odota = Console.ReadLine();
         }

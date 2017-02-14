@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Labra4"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Tietoa oppilaista" Height="350" Width="525">
     <Grid>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Height="38" Margin="289,26,0,0" VerticalAlignment="Top" Width="110" Click="button_Click">
+        <Button x:Name="button" Content="Napsauta" HorizontalAlignment="Left" Height="38" Margin="289,26,0,0" VerticalAlignment="Top" Width="110" Click="button_Click">
         
         </Button>
+        <TextBlock x:Name="txtBlock" HorizontalAlignment="Left" Margin="26,83,0,0" TextWrapping="Wrap" Text="tietoa..." VerticalAlignment="Top" Height="207" Width="455"/>
 
     </Grid>
 </Window>
