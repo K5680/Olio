@@ -12,6 +12,7 @@ namespace teht3
         //Työntekijöiden osalta seuraavia tietoa: työntekijän nimi (Name), työntekijän ammatti (Profession) ja palkka (Salary). 
         //Samassa ohjelmassa johtajien tietoja (Boss), heillä on edellisten lisäksi myös auto (Car) ja palkkabonus (Bonus). 
 
+        private double salary; //koska "ylikirjoitetaan" employee -luokan salary-ominaisuus
         private string car;
         private double bonus;
 
@@ -24,6 +25,29 @@ namespace teht3
                 if (value > -0.1)
                 {
                     bonus = value;
+                }
+            }
+        }
+
+        // new-määreellä piilotettu alkup. employee -luokan salary
+        public new double Salary
+        {
+            get { return salary; }
+            set
+            {
+                Console.WriteLine("Asetetaan pomo-luokan työntekijä.............");
+                if (value < 0.1)
+                {
+                    Console.WriteLine("Palkaton kaveri?");
+                }
+                else if (value > 10000)
+                {
+                    Console.WriteLine("Onkohan 10000 riittävä näin pätevälle kaverille? Mutta olkoon...");
+                    salary = value;
+                }
+                else
+                {
+                    salary = value;
                 }
             }
         }
