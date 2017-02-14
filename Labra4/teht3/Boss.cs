@@ -29,8 +29,8 @@ namespace teht3
             }
         }
 
-        // new-määreellä piilotettu alkup. employee -luokan salary
-        public new double Salary
+        // override-määreellä piilotettu alkup. employee -luokan salary. New-määreellä ei toimi, mutta miksi?
+        public override double Salary
         {
             get { return salary; }
             set

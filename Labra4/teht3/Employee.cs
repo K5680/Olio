@@ -17,7 +17,7 @@ namespace teht3
 
         public string Name { get; set; }
         public string Profession { get; set; }
-        public double Salary
+        public virtual double Salary
         {
             get { return salary; }
             set
@@ -48,7 +48,7 @@ namespace teht3
 
         public override string ToString()
         {
-            return base.ToString() + "  Employee-tiedot:  " + Name + " " + Profession + " " + Salary;
+            return "  Employee-tiedot:  " + Name + " " + Profession + " " + Salary;
         }
 
         public Employee()
