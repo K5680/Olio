@@ -13,11 +13,11 @@ namespace Labra6
         static void Main(string[] args)
         {
 
-            int luotavien_maara = 10000;
+            double luotavien_maara = 10000;
             int nro = 0;
             int etunimen_pituus = 4;
             int sukunimen_pituus = 10;
-
+            
             //arvonnan alustus
             var etunimi = new char[etunimen_pituus];
             var sukunimi = new char[sukunimen_pituus];
@@ -54,49 +54,54 @@ namespace Labra6
             } while (nro < luotavien_maara);
             //kellon pysäytys
             kello.Stop();
-            Console.WriteLine("Tietojen luomiseen kulunut aika: " + kello.Elapsed + " (enter");
+            Console.WriteLine("Tietojen luomiseen kulunut aika: " + kello.Elapsed + " <enter>");
             Console.ReadKey();
 
-
+            kello.Start();
             //tietojen näyttäminen          
             //          foreach (Person person in lista)
             //          {
             //                Console.WriteLine(person.ToString());
             //          }
 
-            //etunimi jota etsitään, hylätty versio
-            //var etsi = new string(etunimi);
-            //Find Using Inline
-            //Person em = lista.Find(delegate (Person e) { return e.FirstName == etsi; });
-            //Console.WriteLine("etsitty: " + em);
 
+            //etsitään tuhatta eri "nimeä"
             string apustring;
-            //arvotaan etsittävä sana
-            for (int i = 0; i < etunimen_pituus; i++)
+            string etu2;
+            double match = 0;
+            for (int tuhat = 0; tuhat < 1000; tuhat++)
             {
-                etunimi[i] = kirjaimet[random.Next(kirjaimet.Length)];
-            }
-            string etu2 = new string(etunimi);
 
-            //etsitään sanaa
-            Console.WriteLine("Etsitään..." +etu2);
-            for (int i = 0; i < luotavien_maara; i++)
-            {
-                apustring = lista[i].ToString();
-                if (apustring.Contains(etu2) == true )
+                //arvotaan etsittävä sana
+                for (int i = 0; i < etunimen_pituus; i++)
                 {
-                    Console.Write("\nLöytyi: " + lista[i]);
-                    
+                    etunimi[i] = kirjaimet[random.Next(kirjaimet.Length)];
                 }
-                else
+                etu2 = new string(etunimi);
+
+                //etsitään sanaa
+                //Console.WriteLine("Etsitään nimeä:  " + etu2);
+                for (int i = 0; i < luotavien_maara; i++)
                 {
-                    Console.Write("etsitään: " + etu2 + " " +lista[i] +  "\n");
+                    apustring = lista[i].ToString();
+                    if (apustring.Contains(etu2) == true)
+                    {
+                        Console.Write(".");
+                        //             Console.Write("\n{0} <MATCH> -> {1}", etu2, lista[i]);
+                        match++;
+                    }
+                    else
+                    {
+                         
+                    }
+
                 }
-
             }
-            
-
+            //jotta prosenttilasku onnistuu desimaalin kanssa, match ja luotavien_maara on doubleja
+            Console.WriteLine("\n\nEtsimiseen kulunut aika: " + kello.Elapsed + "   Pareja löydetty: " + match + " <enter>");
+            Console.WriteLine("\nOsumia " + match + " / " + luotavien_maara + " = " + (match/luotavien_maara)*100 +  "%");
             Console.ReadKey();
+
             
         }
     }
