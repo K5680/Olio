@@ -13,7 +13,7 @@ namespace Labra6
         static void Main(string[] args)
         {
 
-            double luotavien_maara = 10000;
+            int luotavien_maara = 10000;
             int nro = 0;
             int etunimen_pituus = 4;
             int sukunimen_pituus = 10;
@@ -68,7 +68,7 @@ namespace Labra6
             //etsitään tuhatta eri "nimeä"
             string apustring;
             string etu2;
-            double match = 0;
+            double match = 0; // luotu doublena, jotta prosenttilasku toimii desimaalilla
             for (int tuhat = 0; tuhat < 1000; tuhat++)
             {
 
@@ -97,9 +97,9 @@ namespace Labra6
 
                 }
             }
-            //jotta prosenttilasku onnistuu desimaalin kanssa, match ja luotavien_maara on doubleja
+            //jotta prosenttilasku onnistuu desimaalin kanssa, muuttujien on oltava double tai muunnettava doubleksi
             Console.WriteLine("\n\nEtsimiseen kulunut aika: " + kello.Elapsed + "   Pareja löydetty: " + match + " <enter>");
-            Console.WriteLine("\nOsumia " + match + " / " + luotavien_maara + " = " + (match/luotavien_maara)*100 +  "%");
+            Console.WriteLine("\nOsumia " + match + " / " + luotavien_maara + " = " + (match/System.Convert.ToDouble(luotavien_maara))*100 +  "%");
             Console.ReadKey();
 
             
