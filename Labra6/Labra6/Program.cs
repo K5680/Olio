@@ -84,7 +84,7 @@ namespace Labra6
                 //Console.WriteLine("Etsitään nimeä:  " + etu2);
                 for (int i = 0; i < luotavien_maara; i++)
                 {
-                    apustring = lista[i].FirstName.ToString();// jos etu2 -stringi löytyy listan FirstName -sarakkeesta
+                    apustring = lista[i].FirstName.ToString();// jos etu2 -stringi löytyy listan FirstName -sarakkeesta (jos FirstName jätetään pois, etsii stringiä kaikista "sanoista")
                     if (apustring.Contains(etu2) == true)
                     {
                         Console.Write(".");
