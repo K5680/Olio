@@ -18,12 +18,9 @@ namespace Labra7
             // tallenne eri paikkaan -> file exist?
             
             int i = 0;
-
+            //luodaan nimiä -oliolista
             List<Nimet> nimiä = new List<Nimet>();
-            nimiä.Add(new Nimet { Nimi = "peku" });
-            //nimiä.Add(new Nimet { Nimi = "pekau" });
-
-
+            
             string hakemisto = "e:\\"; //Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             try
             {
@@ -40,23 +37,40 @@ namespace Labra7
                     {  
                         foreach (Nimet nimet in nimiä) // Olio-listan jokaisen nimen kohdalla verrataan nimeä olio-listan nimiin
                         {
-                            if (nimet.ToString().Contains(rivi)) // jos oliolistan nimi sisältää tiedosto-listan nimen, annetaan arvoksi 1 jottei sitä enää lisätä oliolistaan uudestaan
-                            {  onkojo = 1;  }
+                            if (nimet.ToString().Contains(rivi)) // jos oliolistan nimi sisältää tiedosto-listan nimen
+                            {
+                                onkojo = 1;    // Annetaan arvoksi 1 jottei sitä enää lisätä oliolistaan uudestaan
+                                nimet.Lisää(); // mutta lisätään kyseisen nimen lukumäärää
+                              //Console.WriteLine("Lisätty  " + nimet.Nimi + nimet.Määrä);
+                            }
                         }
-                        
+
                         if (onkojo == 0) // jos vertailun jälkeen nähdään että nimeä ei ole jo oliolistalla, lisätään se
                         {
-                            nimiä.Add(new Nimet { Nimi = rivi });
-                            Console.WriteLine("Eri nimiä listassa: " + rivi);
+                            nimiä.Add(new Nimet { Nimi = rivi }); // lisätään nimi olioksi
+
+                            foreach (Nimet nimet in nimiä)
+                            {
+                                if (nimet.ToString().Contains(rivi)) // jos oliolistan nimi sisältää tiedosto-listan nimen, annetaan arvoksi 1 jottei sitä enää lisätä oliolistaan uudestaan
+                                {
+                                    nimet.Lisää(); // lisätään kyseisen nimen lukumäärää
+                                    Console.WriteLine("Löydetty nimi: " + rivi);
+                                }
+                            }
                             a++;
                         }
                         onkojo = 0;
                         i++;
-
                     }
                 }
+                Console.WriteLine("\nRivejä yhteensä: {0}    Nimiä yhteensä: {1} \n", rivit.Count(), a);
 
-                Console.WriteLine("\nRivejä yhteensä: {0}    Nimiä yhteensä: {1}", rivit.Count(), a);
+                // listataan nimet
+                foreach (Nimet nimet in nimiä)
+                {
+                    Console.WriteLine("Nimiä " + nimet.Nimi + " löydetty " + nimet.Määrä + "kpl");
+                }
+
                 Console.ReadKey();
             }
             catch (FileNotFoundException)

@@ -8,15 +8,29 @@ namespace Labra7
 {
     class Nimet
     {
+        private int määrä;
+
         public string Nimi { get; set; }
-        
-        public Nimet()
-        {   
+        public virtual int Määrä {
+            get { return määrä;  }
         }
+
+               
+        // metodi
+        public void Lisää()
+        {
+            määrä++;
+        }
+
+
 
         public override string ToString()
         {
             return Nimi;
+        }
+
+        public Nimet()
+        {
         }
     }
 }
